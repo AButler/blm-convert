@@ -7,17 +7,27 @@ namespace BlmConvert
 {
     public static class Program
     {
+        private const int SuccessExitCode = 0;
+        private const int FileNotFoundErrorCode = 1;
+        private const int UnhandledExceptionErrorCode = 99;
+
         public static async Task<int> Main(string[] args)
         {
-            if (args.Length < 1)
+            if (args.Length < 1 || string.Equals(args[0], "-?") || string.Equals(args[0], "/?"))
             {
                 Console.WriteLine("Usage: blmconvert.exe <filename>");
-                return 0;
+                return SuccessExitCode;
             }
 
             var filename = args[0];
+            if (!File.Exists(filename))
+            {
+                await Console.Error.WriteLineAsync($"File not found: {filename}");
+                return FileNotFoundErrorCode;
+            }
+
             var csvFilename = Path.ChangeExtension(filename, ".csv");
-            
+
             try
             {
                 Console.WriteLine("Converting...");
@@ -40,21 +50,21 @@ namespace BlmConvert
                     await csvFile.WriteLineAsync(dataRow);
 
                     rowsWritten++;
-                    
+
                     record = await blmFileReader.ReadRecord();
                 }
-                
+
                 Console.WriteLine($"Complete - {rowsWritten} written");
-                return 0;
+                return SuccessExitCode;
             }
             catch (Exception ex)
             {
                 await Console.Error.WriteLineAsync(ex.ToString());
                 await Console.Error.WriteLineAsync($"Error processing '{filename}'");
-                return 1;
+                return UnhandledExceptionErrorCode;
             }
         }
-        
+
         private static string EscapeCsvValue(string value)
         {
             const string doubleQuote = "\"";
