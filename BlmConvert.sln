@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlmFileReader", "BlmFileReader\BlmFileReader.csproj", "{4680289E-08D3-47B0-93DD-37C7792C9736}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlmConvert", "BlmConvert\BlmConvert.csproj", "{34E17EBD-12A0-4C52-83A7-C2D3B773F6FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlmFileReader.UnitTests", "BlmFileReader.UnitTests\BlmFileReader.UnitTests.csproj", "{9C871227-8DBB-4CAE-A398-3B0E5D78A8D5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4680289E-08D3-47B0-93DD-37C7792C9736}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4680289E-08D3-47B0-93DD-37C7792C9736}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4680289E-08D3-47B0-93DD-37C7792C9736}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4680289E-08D3-47B0-93DD-37C7792C9736}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34E17EBD-12A0-4C52-83A7-C2D3B773F6FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34E17EBD-12A0-4C52-83A7-C2D3B773F6FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34E17EBD-12A0-4C52-83A7-C2D3B773F6FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34E17EBD-12A0-4C52-83A7-C2D3B773F6FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C871227-8DBB-4CAE-A398-3B0E5D78A8D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C871227-8DBB-4CAE-A398-3B0E5D78A8D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C871227-8DBB-4CAE-A398-3B0E5D78A8D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C871227-8DBB-4CAE-A398-3B0E5D78A8D5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
