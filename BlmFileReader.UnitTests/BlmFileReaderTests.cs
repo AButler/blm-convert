@@ -52,7 +52,7 @@ namespace BlmFileReader.UnitTests
             
             Assert.That(record.Fields["AGENT_REF"], Is.EqualTo("REF_123")); 
             Assert.That(record.Fields["ADDRESS_1"], Is.EqualTo("1"));
-            Assert.That(record.Fields["ADDRESS_2"], Is.EqualTo("Bobbington Road"));
+            Assert.That(record.Fields["ADDRESS_2"], Is.EqualTo("Bobbinton Road"));
             Assert.That(record.Fields["ADDRESS_3"], Is.EqualTo(""));
             Assert.That(record.Fields["TOWN"], Is.EqualTo("Bobsville"));
             Assert.That(record.Fields["POSTCODE1"], Is.EqualTo("BO6"));
