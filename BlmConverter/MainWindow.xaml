@@ -1,0 +1,104 @@
+﻿<Window x:Class="BlmConverter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BlmConverter"
+        xmlns:vm="clr-namespace:BlmConverter.ViewModels"
+        mc:Ignorable="d"
+        Title="BLM Converter"
+        Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}"
+        DataContext="{Binding Source={x:Static vm:ViewModelLocator.MainWindow}}"
+        Height="170"
+        Width="600"
+        MinHeight="170"
+        MinWidth="250">
+  <DockPanel>
+    <Menu DockPanel.Dock="Top">
+      <MenuItem Header="_File">
+        <MenuItem Header="_Open"
+                          Command="{Binding SelectInputFileCommand}"/>
+        <Separator />
+        <MenuItem Header="E_xit"
+                          Command="{Binding ExitCommand}" />
+      </MenuItem>
+      <MenuItem Header="_Help">
+        <MenuItem Header="_About"
+                          Command="{Binding AboutCommand}" />
+      </MenuItem>
+    </Menu>
+
+    <Grid Margin="2, 5">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="Auto" />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+
+      <Label Content="_BLM File"
+                   Target="{Binding ElementName=txtInputFile}"
+                   Grid.Column="0"
+                   Grid.Row="0" />
+      <TextBox Text="{Binding InputFilename, UpdateSourceTrigger=PropertyChanged}"
+                     Name="txtInputFile"
+                     AllowDrop="True"
+                     PreviewDragOver="FileTextBoxPreviewDragOver"
+                     PreviewDrop="FileTextBoxPreviewDrop"
+                     Margin="2"
+                     Padding="2"
+                     Grid.Column="1"
+                     Grid.Row="0" />
+      <Button Content="..."
+                    ToolTip="Select file"
+                    Command="{Binding SelectInputFileCommand}"
+                    Margin="2"
+                    Padding="2"
+                    MinWidth="20"
+                    Grid.Column="2"
+                    Grid.Row="0" />
+
+      <Label Content="_Output File"
+                   Target="{Binding ElementName=txtOutputFile}"
+                   Grid.Column="0"
+                   Grid.Row="1" />
+      <TextBox Text="{Binding OutputFilename, UpdateSourceTrigger=PropertyChanged}"
+                     Name="txtOutputFile"
+                     Margin="2"
+                     Padding="2"
+                     Grid.Column="1"
+                     Grid.Row="1" />
+      <Button Content="..."
+                    ToolTip="Select file"
+                    Command="{Binding SelectOutputFileCommand}"
+                    Margin="2"
+                    Padding="2"
+                    MinWidth="20"
+                    Grid.Column="2"
+                    Grid.Row="1" />
+
+      <StackPanel Margin="2, 5"
+                        Grid.Column="1"
+                        Grid.Row="2">
+        <CheckBox Content="_Open CSV after conversion"
+                          IsChecked="{Binding OpenCsvAfterConversion}" />
+      </StackPanel>
+
+      <StackPanel Margin="2, 5"
+                        Orientation="Horizontal"
+                        Grid.Column="1"
+                        Grid.Row="3"
+                        Grid.ColumnSpan="2">
+        <Button Content="_Convert"
+                        Command="{Binding ConvertCommand}"
+                        MinWidth="100"
+                        Padding="2" />
+      </StackPanel>
+    </Grid>
+  </DockPanel>
+</Window>

@@ -59,6 +59,11 @@ namespace BlmFileReader
             }
 
             var line = await ReadLine();
+            
+            while (string.IsNullOrWhiteSpace(line))
+            {
+                line = await ReadLine();
+            }
 
             if (!string.Equals(line, HeaderTag))
             {
@@ -102,7 +107,7 @@ namespace BlmFileReader
                 return null;
             }
 
-            while (!data.EndsWith(_endOfRecordCharacter))
+            while (!data.EndsWith(_endOfRecordCharacter.ToString()))
             {
                 data += Environment.NewLine;
                 data += await ReadLine();
@@ -137,7 +142,7 @@ namespace BlmFileReader
 
             if (!data.EndsWith($"{_endOfFieldCharacter}{_endOfRecordCharacter}"))
             {
-                if (!data.EndsWith(_endOfRecordCharacter))
+                if (!data.EndsWith(_endOfRecordCharacter.ToString()))
                 {
                     throw new BlmFileParseException("Invalid definitions", _lineNumber - 1);
                 }
