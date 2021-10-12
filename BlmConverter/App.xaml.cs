@@ -56,19 +56,17 @@ namespace BlmConverter
         private void ShowErrors(ParserResult<Arguments> result)
         {
             var message = HelpText.AutoBuild(result).ToString();
-            MessageBox.Show(message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            ErrorWindow.Show("Error", message);
+            
             Current.Shutdown(1);
         }
 
-        private Arguments GetClickOnceArguments()
+        private static Arguments GetClickOnceArguments()
         {
             var clickOnceActivationArguments = AppDomain.CurrentDomain.SetupInformation.ActivationArguments;
-            if (clickOnceActivationArguments == null)
-            {
-                return null;
-            }
 
-            var clickOnceArguments = clickOnceActivationArguments.ActivationData;
+            var clickOnceArguments = clickOnceActivationArguments?.ActivationData;
 
             if (clickOnceArguments == null || clickOnceArguments.Length < 1)
             {

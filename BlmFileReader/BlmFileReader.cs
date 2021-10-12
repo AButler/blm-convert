@@ -219,7 +219,7 @@ namespace BlmFileReader
 
         private async Task<IDictionary<string, (string Value, int LineNumber)>> ReadHeaderAttributes()
         {
-            var attributes = new Dictionary<string, (string Value, int LineNumber)>();
+            var attributes = new Dictionary<string, (string Value, int LineNumber)>(StringComparer.InvariantCultureIgnoreCase);
 
             var line = await ReadLine();
 

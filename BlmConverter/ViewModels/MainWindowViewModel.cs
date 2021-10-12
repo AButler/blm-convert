@@ -99,7 +99,7 @@ namespace BlmConverter.ViewModels
                     ? aggex.InnerExceptions.Count > 1 ? ex.ToString() : aggex.InnerExceptions[0].ToString()
                     : ex.ToString();
 
-                MessageBox.Show(message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ErrorWindow.Show("Error", message, Application.Current.MainWindow);
             }
             finally
             {
@@ -215,7 +215,15 @@ namespace BlmConverter.ViewModels
                 return;
             }
 
-            OutputFilename = GenerateOutputFilename(newValue);
+            try
+            {
+                OutputFilename = GenerateOutputFilename(newValue);
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine($"Could not generate output filename from: \"{newValue}\"\r\n{ex}");
+                OutputFilename = "";
+            }
         }
 
         private static string GenerateOutputFilename(string inputFilename)

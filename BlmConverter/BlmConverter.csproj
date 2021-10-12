@@ -30,7 +30,7 @@
     <PublisherName>Andrew Butler</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
-    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationRevision>6</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -92,8 +92,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Arguments.cs" />
+    <Compile Include="ErrorWindow.xaml.cs">
+      <DependentUpon>ErrorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
+    <Page Include="ErrorWindow.xaml" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
